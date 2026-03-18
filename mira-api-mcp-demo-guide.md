@@ -67,7 +67,7 @@ If you're using Path A (Live MCP Demo), follow these steps to connect Claude Des
 
 **Step 1: Install Node.js (if you don't have it already)**
 
-The MCP connection requires Node.js to run. This is the one thing the Developer docs don't mention that will trip you up.
+The MCP connection requires **Node.js ** to run. This is the one thing the Developer docs don't mention.
 
 1. Open your terminal (Mac: Terminal app, Windows: Command Prompt).
 2. Type `node --version` and press Enter.
@@ -359,13 +359,13 @@ There are two things to flag before a deal closes:
 Mira is built on Meltwater's proprietary dataset: real-time news, social media, broadcast, and print sources, all enriched with topics, entities, and sentiment. ChatGPT pulls from the open web with no guarantees on source quality, coverage, or consistency. Mira's responses are cited, reproducible, and grounded in data your team already trusts.
 
 **"Does the customer need to install anything?"**
-They need an AI tool that supports MCP (like Claude Desktop) and the Mira connector file. Setup takes about five minutes. No custom development required.
+They need an AI tool that supports MCP (like Claude Desktop) and the Mira connector file. Setup takes about five minutes, and doesn't require custom development.
 
 **"Is this the same data as Mira Studio?"**
 Yes. Same data, same intelligence, same source. The only difference is where the response shows up.
 
 **"What if my customer's team isn't technical?"**
-That's exactly who this is for. MCP means they type a question in plain language and get a cited response. No JSON, no Postman, no code.
+That's exactly who this is for. MCP means they type a question in plain language and get a cited response. No JSON, no Postman, no code. 
 
 **"What are the pricing tiers?"**
 There are five tiers from Trial to Elite. The Trial is a great first step: 500 prompts over 90 days, enough to build and validate a use case. If they need more headroom mid-trial, the add-on pack gives them 500 extra prompts for $2,500.
