@@ -1,3 +1,4 @@
+[mira-api-mcp-demo-guide.md](https://github.com/user-attachments/files/26096067/mira-api-mcp-demo-guide.md)
 # Mira API MCP Server Demo Guide [Sales]
 
 **Privileged & Confidential. Internal Only.**
@@ -67,7 +68,7 @@ If you're using Path A (Live MCP Demo), follow these steps to connect Claude Des
 
 **Step 1: Install Node.js (if you don't have it already)**
 
-The MCP connection requires **Node.js ** to run. This is the one thing the Developer docs don't mention.
+The MCP connection requires Node.js to run. This is the one thing the Developer docs don't mention that will trip you up.
 
 1. Open your terminal (Mac: Terminal app, Windows: Command Prompt).
 2. Type `node --version` and press Enter.
@@ -77,6 +78,8 @@ The MCP connection requires **Node.js ** to run. This is the one thing the Devel
 **Step 2: Get your Meltwater API key**
 
 Follow the steps in Troubleshooting ("I don't have an API key") to find or create your token from Account > Meltwater API in your buddy account. Copy it somewhere safe.
+
+**Important: never share or display your API key on screen during a live demo.** If your screen is visible to the prospect, make sure the key is hidden or obfuscated before you show any config files, terminal commands, or browser tabs with the key visible.
 
 **Step 3: Open the Claude Desktop config file**
 
@@ -243,6 +246,8 @@ Use this path if you don't have MCP set up, or if you'd rather walk the prospect
 
 You'll also need your API key from your buddy account (see Troubleshooting if you don't have one).
 
+**Important: before you share your screen, make sure your API key is not visible in any open tab.** Pre-authenticate the Endpoints page before the call so you don't have to type or paste your key while the prospect is watching.
+
 ### Step 1: Set the hook (same as Path A)
 
 **What to say:**
@@ -301,7 +306,7 @@ Find the Mira Responses endpoint in the Swagger UI. Click **Try it out**.
 
 Then:
 
-1. Confirm your API key is entered in the `apikey` header field.
+1. Confirm your API key is entered in the `apikey` header field. (Do this before sharing your screen so the key stays hidden.)
 2. Make sure the request body above is pasted in with your prospect's brand name.
 3. Click **Execute**.
 
@@ -359,13 +364,13 @@ There are two things to flag before a deal closes:
 Mira is built on Meltwater's proprietary dataset: real-time news, social media, broadcast, and print sources, all enriched with topics, entities, and sentiment. ChatGPT pulls from the open web with no guarantees on source quality, coverage, or consistency. Mira's responses are cited, reproducible, and grounded in data your team already trusts.
 
 **"Does the customer need to install anything?"**
-They need an AI tool that supports MCP (like Claude Desktop) and the Mira connector file. Setup takes about five minutes, and doesn't require custom development.
+They need an AI tool that supports MCP (like Claude Desktop) and the Mira connector file. Setup takes about five minutes. No custom development required.
 
 **"Is this the same data as Mira Studio?"**
 Yes. Same data, same intelligence, same source. The only difference is where the response shows up.
 
 **"What if my customer's team isn't technical?"**
-That's exactly who this is for. MCP means they type a question in plain language and get a cited response. No JSON, no Postman, no code. 
+That's exactly who this is for. MCP means they type a question in plain language and get a cited response. No JSON, no Postman, no code.
 
 **"What are the pricing tiers?"**
 There are five tiers from Trial to Elite. The Trial is a great first step: 500 prompts over 90 days, enough to build and validate a use case. If they need more headroom mid-trial, the add-on pack gives them 500 extra prompts for $2,500.
@@ -426,12 +431,10 @@ That's fine. Say: "Great question. Let me connect you with our API specialist wh
 
 ## 06: Resources
 
-- **Mira API Developer Docs:** https://developer.meltwater.com/docs/meltwater-api/mira-api/responses/
-- **Mira API Internal Demo Guide** (slides): Check the PMM API Demos folder
-- **Mira Studio Demo Guidebook** (slides): Check the Mira Studio Saleshood page
-- **Mira API MCP Demo video/GIF:** Available in the Slack Canvas and Saleshood
-- **Mira Studio FAQ:** Google Doc (linked from Saleshood)
-- **Mira API Discovery Questions:** For qualifying whether a prospect is a good fit for the API
+- **Mira API Developer Docs:** [Mira API Overview](https://developer.meltwater.com/docs/meltwater-api/mira-api/overview/) | [Responses Endpoint](https://developer.meltwater.com/docs/meltwater-api/mira-api/responses/) | [MCP Server Setup](https://developer.meltwater.com/docs/meltwater-api/mira-api/mcp-server/) | [API Credentials](https://developer.meltwater.com/docs/meltwater-api/getting-started/api-credentials/)
+- **API Endpoints (Swagger UI):** [Mira Responses endpoint](https://developer.meltwater.com/docs/meltwater-api/reference/endpoints/#/Mira%20API/post_v3_mira_responses) (use for Path B live demo)
+- **Mira API MCP Demo GIF:** `Mira API MCP.gif` (upload to this repo or use Wistia link: [TODO: add Wistia link])
+![Mira API MCP](https://github.com/user-attachments/assets/549a8922-ecc8-42d5-8899-9896f4ee59fb)
 
 ---
 
