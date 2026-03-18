@@ -21,7 +21,7 @@ This is a step-by-step demo guide for showing prospects how the Mira API works i
 
 Before diving in, here are the terms you'll use in this demo. You don't need to memorize technical definitions, just know what they mean in plain language.
 
-**Mira API:** The way customers pull Meltwater intelligence into their own tools. Instead of logging into Meltwater, their systems ask Meltwater questions directly and get answers back.
+**Mira API:** The way customers connect Mira AI into their own tools. Instead of logging into Meltwater, their systems ask Meltwater questions directly and get answers back.
 
 **MCP (Model Context Protocol):** Think of it as a plug that connects an AI tool to a data source. Plug it in, and the AI tool can talk to Meltwater. This is an open standard that any AI tool can support.
 
@@ -37,7 +37,7 @@ Before diving in, here are the terms you'll use in this demo. You don't need to 
 
 ## How MCP fits into the Mira API story
 
-The Mira API lets customers bring Meltwater's intelligence into their own tools. MCP (Model Context Protocol) is one way to do that (see Key Terms above). It connects the Mira API to AI assistants so users can ask Meltwater questions in natural language, from inside the tools they already work in.
+The Mira API lets customers bring Mira AI-powered responses into their own tools. MCP (Model Context Protocol) is one way to do that (see Key Terms above). It connects the Mira API to AI assistants so users can ask Meltwater questions in natural language, from inside the tools they already work in.
 
 **What to say:**
 "Your team doesn't have to open Meltwater to get Meltwater insights. The Mira API delivers the same intelligence your team sees in Mira Studio: brand coverage, media trends, sentiment, competitive analysis. All of that, directly into the tools your people already use. MCP is the connector that makes that happen. No custom code needed."
@@ -47,9 +47,7 @@ A configuration layer on top of the Mira API. Same intelligence, same cited resp
 
 **How it all connects:**
 
-[![Mira API Technical Diagram](mira-api-diagram.png)](https://docs.google.com/presentation/d/1lqofldVT5sQMH10lZ3tviuv9BwJOVXBbJZoqdlxOEFA/edit?slide=id.g3cdb1fb610a_0_15#slide=id.g3cdb1fb610a_0_15)
-
-*To display this diagram on GitHub: export the slide as a PNG, name it `mira-api-diagram.png`, and upload it to this repo. The image will render automatically.*
+<img width="1664" height="944" alt="Mira API Diagram " src="https://github.com/user-attachments/assets/26432efc-6511-4799-9c11-e47992c477fa" />
 
 ---
 
@@ -450,3 +448,5 @@ That's fine. Say: "Great question. Let me connect you with our team who can walk
 ---
 
 *Questions or feedback on this guide? Reach out to PMM in #product-api.*
+
+*Co-authored with Claude, Anthropic*
