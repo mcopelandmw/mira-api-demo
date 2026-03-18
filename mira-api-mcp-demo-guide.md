@@ -45,6 +45,12 @@ The Mira API lets customers bring Meltwater's intelligence into their own tools.
 **What MCP actually is:**
 A configuration layer on top of the Mira API. Same intelligence, same cited responses, just delivered through a different channel.
 
+**How it all connects:**
+
+[![Mira API Technical Diagram](mira-api-diagram.png)](https://docs.google.com/presentation/d/1lqofldVT5sQMH10lZ3tviuv9BwJOVXBbJZoqdlxOEFA/edit?slide=id.g3cdb1fb610a_0_15#slide=id.g3cdb1fb610a_0_15)
+
+*To display this diagram on GitHub: export the slide as a PNG, name it `mira-api-diagram.png`, and upload it to this repo. The image will render automatically.*
+
 ---
 
 ## Pre-Requisites
