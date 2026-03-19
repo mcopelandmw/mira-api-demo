@@ -369,7 +369,7 @@ Mira is built on Meltwater's proprietary dataset: real-time news, social media, 
 They need an AI tool that supports MCP (like Claude Desktop) and the Mira connector file. Setup takes about five minutes. No custom development required.
 
 **"Is this the same data as Mira Studio?"**
-Yes. Same data, same intelligence, same source. The only difference is where the response shows up.
+Yes. The same content, and intelligence as Mira Studio. The only difference is where the response shows up. 
 
 **"What if my customer's team isn't technical?"**
 That's exactly who this is for. MCP means they type a question in plain language and get a cited response. No technical setup on their end, no code.
