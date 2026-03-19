@@ -69,7 +69,7 @@ Before you demo, make sure you have:
 
 If you're using Path A (Live MCP Demo), follow these steps to connect Claude Desktop to the Mira API. Do this well before your demo call, not five minutes before.
 
-Personal note: the author of this guide connected the Mira API to Claude Desktop on her second day using Claude, with zero technical background. If I can do it, you can, too. 🐥
+**Personal note:** Product Marketing connected the Mira API to Claude Desktop on her second day using Claude, with zero technical background. If she can do it, you can, too. 🐥
 
 **Step 1: Install Node.js (if you don't have it already)**
 
