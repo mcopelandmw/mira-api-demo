@@ -177,6 +177,9 @@ Click the **Authorize** button and enter your API key. Do this before sharing yo
 
 Find the Mira Responses endpoint. Click **Try it out**.
 
+
+<img width="800" alt="API Endpoints page showing the Mira Responses endpoint expanded with request body and Try it out button" src="screenshots/path-b-authorize-gif.png" />
+
 **Important: the default request body has placeholder values that will cause an error if you don't replace them.** Replace the entire request body with:
 
 ```json
