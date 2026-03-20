@@ -346,7 +346,7 @@ After the live request, pull up the Mira API MCP Demo GIF or video to show what 
 **What to say:**
 "That was the API under the hood. Now here's what it looks like for the end user."
 
-> **[GIF/Video: Use the Mira API MCP Demo GIF from Wistia — already linked in Resources below]**
+> **[[GIF/Video: Use the Mira API MCP Demo GIF from Wistia — already linked in Resources below]](https://meltwater-3.wistia.com/medias/x5c95xb5gz)**
 
 Play the GIF/video. Let the prospect watch the full flow.
 
