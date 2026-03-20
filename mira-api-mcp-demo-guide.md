@@ -1,4 +1,4 @@
-[mira-api-mcp-demo-guide.md](https://github.com/user-attachments/files/26130911/mira-api-mcp-demo-guide.md)
+[mira-api-mcp-demo-guide.md](https://github.com/user-attachments/files/26130925/mira-api-mcp-demo-guide.md)
 # Mira API MCP Server Demo Guide [Sales]
 
 **Privileged & Confidential. Internal Only.**
@@ -279,7 +279,7 @@ You'll also need your API key from your buddy account (see Troubleshooting if yo
 
 Switch to the [Mira API Overview](https://developer.meltwater.com/docs/meltwater-api/mira-api/overview/) tab. Spend about 30 seconds here to set context.
 
-> **[Screenshot: The Mira API Overview page in Chrome]**
+> **[Screenshot needed: The Mira API Overview page at developer.meltwater.com — show the top of the page with the introduction and key endpoints listed. Save as `screenshots/path-b-overview.png`]**
 
 **What to say:**
 "This is the Mira API Developer page. This is where your technical team would go to set up the integration. I'll give you the quick version."
@@ -294,7 +294,7 @@ Point out two things:
 
 Switch to your [API Endpoints](https://developer.meltwater.com/docs/meltwater-api/reference/endpoints/#/Mira%20API/post_v3_mira_responses) tab. This page has an interactive Swagger UI where you can fire a real API request from the browser.
 
-> **[Screenshot: The API Endpoints page showing the Swagger UI with endpoint list]**
+> **[Screenshot needed: The API Endpoints page showing the Swagger UI with the Mira API endpoint list visible. Save as `screenshots/path-b-swagger-ui.png`]**
 
 **What to say:**
 "Now let me show you what this looks like in real time. I'm going to send a live request to the Mira API right from this page."
@@ -328,7 +328,7 @@ Then:
 2. Make sure the request body above is pasted in with your prospect's brand name.
 3. Click **Execute**.
 
-> **[Screenshot: The Swagger UI with the request filled in and the Execute button visible]**
+> **[Screenshot needed: The Swagger UI with the request body filled in (use the sample JSON above) and the Execute button visible. Save as `screenshots/path-b-swagger-request.png`]**
 
 **What to say while it runs:**
 "This is a real call to the Mira API. I'm asking it the same kind of question your team would ask inside Mira Studio. But instead of opening the platform, the API delivers the answer directly."
@@ -337,7 +337,7 @@ Then:
 
 Once the response loads in the Swagger UI, scroll to the response body.
 
-> **[Screenshot: The Swagger UI response body showing structured analysis and citations]**
+> **[Screenshot needed: The Swagger UI response body showing structured analysis and cited sources. Save as `screenshots/path-b-swagger-response.png`]**
 
 **What to point out:**
 - The response is structured analysis, organized by themes, trends, or sentiment. "This is ready to use. No manual formatting needed."
@@ -351,7 +351,7 @@ After the live request, pull up the Mira API MCP Demo GIF or video to show what 
 **What to say:**
 "That was the API under the hood. Now here's what it looks like for the end user."
 
-> **[Screenshot/GIF: The Mira API MCP Demo GIF from the Slack Canvas]**
+> **[GIF/Video: Use the Mira API MCP Demo GIF from Wistia — already linked in Resources below]**
 
 Play the GIF/video. Let the prospect watch the full flow.
 
