@@ -1,3 +1,5 @@
+[mira-api-mcp-demo-guide.md](https://github.com/user-attachments/files/26131207/mira-api-mcp-demo-guide.md)
+[mira-api-mcp-demo-guide.md](https://github.com/user-attachments/files/26130925/mira-api-mcp-demo-guide.md)
 # Mira API MCP Server Demo Guide [Sales]
 
 **Privileged & Confidential. Internal Only.**
@@ -186,13 +188,10 @@ Pick a use case that maps to your prospect's world. The three below work well fo
 
 ## 02: Demo Flow
 
-### Step 1: Set the hook
+### Step 1: Set the stage
 
 **What to say:**
-"What if your team could ask Meltwater a question without ever opening Meltwater?"
-
-
-"Your teams are spread across different tools. Analysts log into Meltwater. Comms teams work in Slack. Executives want briefings in email. The Mira API closes that gap. Meltwater's intelligence, delivered wherever your people already work."
+"Your teams are spread across different tools. Analysts work in Meltwater. Comms teams live in Slack. Executives want briefings in email. The Mira API connects Meltwater's intelligence to wherever your people already work, so they don't have to switch contexts to get what they need."
 
 ### Step 2: Show the tool
 
@@ -266,13 +265,10 @@ You'll also need your API key from your buddy account (see Troubleshooting if yo
 
 **Important: before you share your screen, make sure your API key is not visible in any open tab.** Pre-authenticate the Endpoints page before the call so you don't have to type or paste your key while the prospect is watching.
 
-### Step 1: Set the hook (same as Path A)
+### Step 1: Set the stage (same as Path A)
 
 **What to say:**
-"What if your team could ask Meltwater a question without ever opening Meltwater?"
-
-
-"The Mira API makes that possible. Let me show you what it looks like."
+"Your teams are spread across different tools. The Mira API connects Meltwater's intelligence to wherever your people already work. Let me show you what that looks like."
 
 ### Step 2: Show the Overview page (context)
 
