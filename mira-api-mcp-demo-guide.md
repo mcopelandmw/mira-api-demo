@@ -110,24 +110,6 @@ If you don't see it, check the Troubleshooting section below before moving on.
 
 Open a new conversation in Claude Desktop. There's no special command or syntax to activate the Meltwater connection. Just type a question in plain language, like "What are the top media narratives around Nike in the last 7 days?" Claude will recognize that the question needs Meltwater data and automatically call the MCP tool. You'll see an accordion expand showing the tool being called. Once the response comes back with cited sources, you're good to go.
 
-**What you'll see first: the MCP tool loading.** Claude sends the request to Meltwater, and you'll see the tool accordion expand with the request and response details.
-
-<img width="800" alt="Claude Desktop showing the MCP tool accordion with the Meltwater request loading and two tools (list_projects and ask) being called" src="screenshots/mcp-tool-connection.png" />
-
-**What comes next: the streaming response.** As Claude processes the Meltwater data, the response streams in word by word. You'll see the prompt being sent and the tool completing.
-
-<img width="800" alt="Claude Desktop showing the prompt being sent to Meltwater via the MCP tool with streaming enabled" src="screenshots/prompt-streaming.png" />
-
-**The full response (top).** Claude returns a structured media intelligence report with narrative themes, sentiment labels, and cited source links.
-
-<img width="800" alt="Claude Desktop response showing a Nike Media Intelligence Report with Narrative 1 (Analyst Upgrades and Stock Recovery) and Narrative 2 (The Swoosh Pivot) including sentiment labels and source citations" src="screenshots/response-top.png" />
-
-**The full response (bottom).** The response continues with additional narratives, a Macro Themes at a Glance table, and a bottom-line summary.
-
-<img width="800" alt="Claude Desktop response showing Narrative 4 (Earnings Anticipation), a Macro Themes at a Glance summary table with theme signals, and the bottom-line analysis" src="screenshots/response-bottom.png" />
-
-**Animated walkthrough.** Here's the full flow from prompt to response in one GIF:
-
 <img width="800" alt="GIF showing the full MCP verification flow in Claude Desktop — from typing a question to receiving a cited Meltwater response" src="screenshots/MCP%20Confirm%20it%20works.gif" />
 
 ### Step 7: Set up a Claude Desktop Project for better results
