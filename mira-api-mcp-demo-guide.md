@@ -175,13 +175,13 @@ Switch to the [API Endpoints](https://developer.meltwater.com/docs/meltwater-api
 
 Click the **Authorize** button (top right of the Endpoints page) and enter your API key in the `apikey` field. Once it shows "Authorized," close the modal. Do this before sharing your screen if you're on a call.
 
-<img width="800" alt="API Endpoints page showing the Authorize modal with apikey field and Authorized status" src="screenshots/path-b-authorize.png" />
+<img width="800" alt="GIF showing the Authorize button, entering the API key, and confirming Authorized status" src="screenshots/path-b-authorize-gif.gif" />
 
 ### Step 4: Send a test request
 
 Find the Mira Responses endpoint. Click **Try it out**.
 
-<img width="800" alt="GIF showing how to find the Mira Responses endpoint and click Try it out" src="screenshots/path-b-try-it-out.gif" />
+<img width="800" alt="GIF showing how to find the Mira Responses endpoint and click Try it out" src="screenshots/Mira%20API%20Demo%20Endpoints.gif" />
 
 **Important: the default request body has placeholder values that will cause an error if you don't replace them.** Replace the entire request body with:
 
@@ -204,13 +204,11 @@ Find the Mira Responses endpoint. Click **Try it out**.
 
 Swap in any brand you want to test. Then click **Execute**.
 
-<img width="800" alt="GIF showing the request body being pasted and Execute being clicked" src="screenshots/path-b-execute.gif" />
-
 ### Step 5: Review the response
 
 The response will appear below the request. It contains structured analysis organized by themes, with sentiment and cited sources.
 
-<img width="800" alt="API Endpoints page showing the Mira API response with structured analysis and cited sources" src="screenshots/path-b-swagger-response.png" />
+<img width="800" alt="GIF showing the API response loading with structured analysis" src="screenshots/path-b-review-response.gif" />
 
 Things to look for:
 
@@ -227,4 +225,55 @@ You should already have access through your buddy account. Full instructions are
 
 1. Log into your Meltwater buddy account.
 2. In the left sidebar, go to **Account** > **Meltwater API**.
-3. You'll see your existing tokens listed under **Tokens**. If you ne
+3. You'll see your existing tokens listed under **Tokens**. If you need a new one, click **Create Token** (red button, top right).
+4. Name the token something descriptive and click OK.
+5. Copy the token immediately. You won't be able to see it again after you leave the page.
+
+<img width="800" alt="Meltwater Account page showing Meltwater API section with token list and Create Token button" src="screenshots/api-tokens-page.png" />
+
+If you don't see "Meltwater API" in your sidebar, all buddy accounts should have access. Reach out to support to get it resolved.
+
+Note for customer-facing context: customers receive their API key after purchase during onboarding. They won't have one during the sales process.
+
+**"My MCP tool isn't connecting to Meltwater."**
+Check these in order:
+
+1. **Is Node.js installed?** If you skipped Step 1 of the MCP setup, go to [https://nodejs.org](https://nodejs.org) and install the LTS version first.
+2. **Is your API key correct?** Make sure the key in the config file matches the token from your buddy account (Account > Meltwater API). Copy-paste it again to be safe.
+3. **Did you restart Claude Desktop?** The config only loads on startup. Fully quit and reopen the app.
+4. **Is the config file formatted correctly?** A missing comma or bracket will break it silently. If you're not sure, delete everything in the config file, then copy and paste the full config block from Step 4 again. Replace `<your api key>` with your actual key and save.
+
+If none of that works, try deleting the config, restarting Claude Desktop, then re-adding the config and restarting again.
+
+**"How do I set up MCP in the first place?"**
+Follow Option 1 above. For the full Developer docs version, see the [MCP Server docs page](https://developer.meltwater.com/docs/meltwater-api/mira-api/mcp-server/). Note: the docs lead with an OpenAI example first. Scroll down to the "Integrating with Claude Desktop" section for the config you need.
+
+**"I got an error about npx or mcp-remote not being found."**
+This means Node.js isn't installed or didn't install correctly. Go to [https://nodejs.org](https://nodejs.org), download and install the LTS version again, then restart your computer and Claude Desktop.
+
+**"The response came back empty or with an error."**
+This usually means one of two things: your API key is expired or invalid, or your prompt quota has been reached. Flag it to the Solutions Agent in Slack to confirm your key is active and your account has remaining prompts.
+
+**"The response is too generic or missing context about the brand."**
+Set up a Mira Project for the brand you're testing. Without a Project, Mira AI answers based only on the prompt. With a Project, it pulls in your saved brand context, competitors, and filters automatically.
+
+**"The response is slow or returning errors during heavy testing."**
+The MCP server is limited to 60 requests per minute, shared with the Mira API Responses endpoint. If you're running a lot of test prompts back to back, space them out. Conversations can also hold up to 290,000 tokens of history before older messages get trimmed.
+
+---
+
+## Resources
+
+**Developer Documentation**
+- [Mira API Overview](https://developer.meltwater.com/docs/meltwater-api/mira-api/overview/) | [Responses Endpoint](https://developer.meltwater.com/docs/meltwater-api/mira-api/responses/) | [MCP Server Setup](https://developer.meltwater.com/docs/meltwater-api/mira-api/mcp-server/) | [API Credentials](https://developer.meltwater.com/docs/meltwater-api/getting-started/api-credentials/) | [Projects](https://developer.meltwater.com/docs/meltwater-api/mira-api/projects/)
+- [API Endpoints / "Try it out"](https://developer.meltwater.com/docs/meltwater-api/reference/endpoints/#/Mira%20API/post_v3_mira_responses) (for live testing)
+
+**Demo Assets**
+- [Mira API MCP Demo Video](https://meltwater-3.wistia.com/medias/x5c95xb5gz) (Wistia)
+- [Mira API Technical Diagram](https://docs.google.com/presentation/d/1lqofldVT5sQMH10lZ3tviuv9BwJOVXBbJZoqdlxOEFA/edit?slide=id.g3cdb1fb610a_0_15#slide=id.g3cdb1fb610a_0_15) (Google Slides)
+
+---
+
+*Questions or feedback? Reach out to PMM in #product-api.*
+
+*Co-authored with Claude, Anthropic*
