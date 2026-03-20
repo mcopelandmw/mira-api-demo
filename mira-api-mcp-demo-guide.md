@@ -110,7 +110,25 @@ If you don't see it, check the Troubleshooting section below before moving on.
 
 Open a new conversation in Claude Desktop. There's no special command or syntax to activate the Meltwater connection. Just type a question in plain language, like "What are the top media narratives around Nike in the last 7 days?" Claude will recognize that the question needs Meltwater data and automatically call the MCP tool. You'll see an accordion expand showing the tool being called. Once the response comes back with cited sources, you're good to go.
 
-<img width="800" alt="GIF showing a live Mira API query in Claude Desktop with the MCP tool calling Meltwater and returning a cited response" src="screenshots/mcp-demo.gif" />
+**What you'll see first: the MCP tool loading.** Claude sends the request to Meltwater, and you'll see the tool accordion expand with the request and response details.
+
+<img width="800" alt="Claude Desktop showing the MCP tool accordion with the Meltwater request loading and two tools (list_projects and ask) being called" src="screenshots/mcp-tool-connection.png" />
+
+**What comes next: the streaming response.** As Claude processes the Meltwater data, the response streams in word by word. You'll see the prompt being sent and the tool completing.
+
+<img width="800" alt="Claude Desktop showing the prompt being sent to Meltwater via the MCP tool with streaming enabled" src="screenshots/prompt-streaming.png" />
+
+**The full response (top).** Claude returns a structured media intelligence report with narrative themes, sentiment labels, and cited source links.
+
+<img width="800" alt="Claude Desktop response showing a Nike Media Intelligence Report with Narrative 1 (Analyst Upgrades and Stock Recovery) and Narrative 2 (The Swoosh Pivot) including sentiment labels and source citations" src="screenshots/response-top.png" />
+
+**The full response (bottom).** The response continues with additional narratives, a Macro Themes at a Glance table, and a bottom-line summary.
+
+<img width="800" alt="Claude Desktop response showing Narrative 4 (Earnings Anticipation), a Macro Themes at a Glance summary table with theme signals, and the bottom-line analysis" src="screenshots/response-bottom.png" />
+
+**Animated walkthrough.** Here's the full flow from prompt to response in one GIF:
+
+<img width="800" alt="GIF showing the full MCP verification flow in Claude Desktop — from typing a question to receiving a cited Meltwater response" src="screenshots/MCP%20Confirm%20it%20works.gif" />
 
 ### Step 7: Set up a Claude Desktop Project for better results
 
@@ -122,9 +140,14 @@ Without a Claude Desktop Project, Claude may skip source links, return flat text
 
 1. In Claude Desktop, go to **Projects** in the sidebar.
 2. Click **Create a new project** (e.g., "Mira API Demo").
+
+<img width="800" alt="Claude Desktop Create a personal project screen with name field and Create project button highlighted" src="screenshots/project-create.png" />
+
 3. In the Project instructions, paste the following:
 
 > *"For every question, use the Meltwater MCP tool to retrieve real-time media intelligence. Before answering, call list_projects to check if a relevant Mira Project is available by name, then use that project's ID to list the saved Explore searches for the user to confirm when querying. Always include the original source citations with article titles and URLs in your response. Format the response with clear sections, sentiment labels, and cited sources. Enable streaming."*
+
+<img width="800" alt="Claude Desktop Project instructions modal with Mira API demo instructions pasted in and Instructions panel visible" src="screenshots/project-instructions.png" />
 
 4. Save the Project and select it before running your prompts.
 
@@ -142,9 +165,9 @@ If no Mira Project exists for the brand, Claude will still answer the question. 
 
 Behind the scenes, the MCP server exposes exactly two tools: `list_projects` (to find your Mira Projects) and `ask` (to send a question, optionally scoped to a specific project). The Claude Desktop Project instructions tell Claude to use both.
 
-<img width="800" alt="Claude Desktop Create a personal project screen with name field and Create project button highlighted" src="screenshots/project-create.png" />
+**Here's what it looks like when Claude uses a Mira Project with saved searches:**
 
-<img width="800" alt="Claude Desktop Project instructions modal with Mira API demo instructions pasted in and Instructions panel visible" src="screenshots/project-instructions.png" />
+<img width="800" alt="GIF showing Claude Desktop pulling a Mira Project's saved Explore searches and using them to scope the MCP query" src="screenshots/Project%20with%20Searches%20in%20MCP.gif" />
 
 **Why this matters:** Without a Claude Desktop Project, you'd have to tell Claude what to do in every prompt. With it, Claude already knows to find your Mira Projects, use your saved searches, and format the response with citations. Type a question, get a fully sourced answer.
 
@@ -169,7 +192,7 @@ The [Mira API Overview](https://developer.meltwater.com/docs/meltwater-api/mira-
 
 ### Step 2: Open the Endpoints page
 
-Switch to the [API Endpoints](https://developer.meltwater.com/docs/meltwater-api/reference/endpoints/#/Mira%20API/post_v3_mira_responses) tab. This page has a built-in testing tool where you can send a real API request from the browser.
+Switch to the [API Endpoints](https://developer.meltwater.com/docs/meltwater-api/reference/endpoints/#/Mira%20API/post_v3_mira_responses) tab. This page has a built-in testing tool where you can send a real API request from the browser. You'll see the full list of API endpoints. Scroll down to find the **Mira API** section with the `/v3/mira/responses` endpoint.
 
 <img width="800" alt="API Endpoints page showing the interactive testing tool with endpoint list and Authorize button" src="screenshots/path-b-swagger-ui.png" />
 
@@ -181,9 +204,7 @@ Click the **Authorize** button (top right of the Endpoints page) and enter your 
 
 ### Step 4: Send a test request
 
-Find the Mira Responses endpoint. Click **Try it out**.
-
-<img width="800" alt="GIF showing how to find the Mira Responses endpoint and click Try it out" src="screenshots/Mira%20API%20Demo%20Endpoints.gif" />
+Find the **Mira Responses** endpoint (`POST /v3/mira/responses`). Click **Try it out**.
 
 **Important: the default request body has placeholder values that will cause an error if you don't replace them.** Replace the entire request body with:
 
@@ -206,11 +227,15 @@ Find the Mira Responses endpoint. Click **Try it out**.
 
 Swap in any brand you want to test. Then click **Execute**.
 
+Here's the full flow from clicking Try it out through Execute:
+
+<img width="800" alt="GIF showing how to find the Mira Responses endpoint, click Try it out, replace the request body, and click Execute" src="screenshots/Mira%20API%20Demo%20Endpoints.gif" />
+
 ### Step 5: Review the response
 
 The response will appear below the request. It contains structured analysis organized by themes, with sentiment and cited sources.
 
-<img width="800" alt="GIF showing the API response loading with structured analysis" src="screenshots/path-b-review-response.gif" />
+<img width="800" alt="GIF showing the API response loading with structured analysis, themes, sentiment labels, and cited sources" src="screenshots/path-b-review-response.gif" />
 
 Things to look for:
 
@@ -272,6 +297,7 @@ The MCP server is limited to 60 requests per minute, shared with the Mira API Re
 
 **Demo Assets**
 - [Mira API MCP Demo Video](https://meltwater-3.wistia.com/medias/x5c95xb5gz) (Wistia)
+- [Mira MCP Claude Project Walkthrough](screenshots/Mira%20MCP%20Claude%20Project.mp4) (Video)
 - [Mira API Technical Diagram](https://docs.google.com/presentation/d/1lqofldVT5sQMH10lZ3tviuv9BwJOVXBbJZoqdlxOEFA/edit?slide=id.g3cdb1fb610a_0_15#slide=id.g3cdb1fb610a_0_15) (Google Slides)
 
 ---
