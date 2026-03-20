@@ -1,4 +1,3 @@
-[mira-api-mcp-setup-guide.md](https://github.com/user-attachments/files/26143881/mira-api-mcp-setup-guide.md)
 # Mira API MCP Server: Setup & Testing Guide
 
 **Internal Only.**
@@ -101,19 +100,21 @@ Replace everything in the file with the following, swapping in your real API key
 
 Save the config file, then fully quit and reopen Claude Desktop. The MCP connection won't activate until you restart.
 
-### Step 6: Verify it works
-
-Open a new conversation in Claude Desktop. You should see "meltwater" listed as an available tool. Type a test prompt like "What are the top media narratives around Nike in the last 7 days?" and confirm you get a cited response.
+After restarting, go to **Settings > Developer** and confirm you see "meltwater" listed as an active MCP server. This is how you know the config loaded correctly.
 
 <img width="800" alt="Claude Desktop Settings showing the Meltwater MCP server running" src="screenshots/meltwater-mcp-settings.png" />
 
-If it doesn't work, check the Troubleshooting section below.
+If you don't see it, check the Troubleshooting section below before moving on.
+
+### Step 6: Verify it works
+
+Open a new conversation in Claude Desktop. There's no special command or syntax to activate the Meltwater connection. Just type a question in plain language, like "What are the top media narratives around Nike in the last 7 days?" Claude will recognize that the question needs Meltwater data and automatically call the MCP tool. You'll see an accordion expand showing the tool being called. Once the response comes back with cited sources, you're good to go.
 
 ### Step 7: Set up a Claude Desktop Project for better results
 
-**Important: "Project" here means a Claude Desktop Project, not a Mira Studio Project.** They're different things. A Mira Project holds your brand context inside Meltwater. A Claude Desktop Project holds instructions that tell Claude how to behave when you chat with it. You need both working together to get the best results.
+**Important: "Project" here means a Claude Desktop Project, not a Mira Studio Project.** They're different things. A Claude Desktop Project holds instructions that tell Claude how to behave when you chat with it. A Mira Project is optional context that narrows results to a specific brand, competitor set, or topic. You only need a Mira Project if you want to scope the response to a particular brand setup.
 
-Without a Claude Desktop Project, Claude may skip source links, return flat text, or ignore your Mira Projects entirely. Setting one up takes about two minutes and makes every response richer.
+Without a Claude Desktop Project, Claude may skip source links, return flat text, or not know how to use your Mira Projects when they are available. Setting one up takes about two minutes and makes every response richer.
 
 **Create the Project:**
 
@@ -121,7 +122,7 @@ Without a Claude Desktop Project, Claude may skip source links, return flat text
 2. Click **Create a new project** (e.g., "Mira API Demo").
 3. In the Project instructions, paste the following:
 
-> *"For every question, use the Meltwater MCP tool to retrieve real-time media intelligence. Before answering, call list_projects to find the relevant Mira Project by name, then use that project's ID and its saved Explore searches when querying. Always include the original source citations with article titles and URLs in your response. Format the response with clear sections, sentiment labels, and cited sources. Enable streaming."*
+> *For every question, use the Meltwater MCP tool to retrieve real-time media intelligence. Before answering, call list_projects to check if a relevant Mira Project is available by name. If one exists, ask what saved Explore searches are available in that project, and confirm with the user which searches to use before querying. Always include the original source citations with article titles and URLs in your response. Format the response with clear sections, sentiment labels, and cited sources. Enable streaming.*
 
 4. Save the Project and select it before running your prompts.
 
