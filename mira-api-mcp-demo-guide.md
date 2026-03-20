@@ -110,6 +110,8 @@ If you don't see it, check the Troubleshooting section below before moving on.
 
 Open a new conversation in Claude Desktop. There's no special command or syntax to activate the Meltwater connection. Just type a question in plain language, like "What are the top media narratives around Nike in the last 7 days?" Claude will recognize that the question needs Meltwater data and automatically call the MCP tool. You'll see an accordion expand showing the tool being called. Once the response comes back with cited sources, you're good to go.
 
+<img width="800" alt="GIF showing a live Mira API query in Claude Desktop with the MCP tool calling Meltwater and returning a cited response" src="screenshots/mcp-demo.gif" />
+
 ### Step 7: Set up a Claude Desktop Project for better results
 
 **Important: "Project" here means a Claude Desktop Project, not a Mira Studio Project.** They're different things. A Claude Desktop Project holds instructions that tell Claude how to behave when you chat with it. A Mira Project is optional context that narrows results to a specific brand, competitor set, or topic. You only need a Mira Project if you want to scope the response to a particular brand setup.
@@ -140,9 +142,9 @@ If no Mira Project exists for the brand, Claude will still answer the question. 
 
 Behind the scenes, the MCP server exposes exactly two tools: `list_projects` (to find your Mira Projects) and `ask` (to send a question, optionally scoped to a specific project). The Claude Desktop Project instructions tell Claude to use both.
 
-> **[Screenshot needed: Claude Desktop Projects sidebar showing the Mira API Demo project selected]**
+<img width="800" alt="Claude Desktop Create a personal project screen with name field and Create project button highlighted" src="screenshots/project-create.png" />
 
-> **[Screenshot needed: Claude Desktop showing the list_projects call returning Mira Projects, then querying with project context and saved Explore search]**
+<img width="800" alt="Claude Desktop Project instructions modal with Mira API demo instructions pasted in and Instructions panel visible" src="screenshots/project-instructions.png" />
 
 **Why this matters:** Without a Claude Desktop Project, you'd have to tell Claude what to do in every prompt. With it, Claude already knows to find your Mira Projects, use your saved searches, and format the response with citations. Type a question, get a fully sourced answer.
 
