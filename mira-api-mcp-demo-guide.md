@@ -1,3 +1,4 @@
+[mira-api-mcp-setup-guide.md](https://github.com/user-attachments/files/26143881/mira-api-mcp-setup-guide.md)
 # Mira API MCP Server: Setup & Testing Guide
 
 **Internal Only.**
@@ -235,7 +236,7 @@ Check these in order:
 1. **Is Node.js installed?** If you skipped Step 1 of the MCP setup, go to [https://nodejs.org](https://nodejs.org) and install the LTS version first.
 2. **Is your API key correct?** Make sure the key in the config file matches the token from your buddy account (Account > Meltwater API). Copy-paste it again to be safe.
 3. **Did you restart Claude Desktop?** The config only loads on startup. Fully quit and reopen the app.
-4. **Is the config file formatted correctly?** A missing comma or bracket will break it silently. If you're not sure, paste your config into [jsonlint.com](https://jsonlint.com) and click "Validate" to check.
+4. **Is the config file formatted correctly?** A missing comma or bracket will break it silently. If you're not sure, delete everything in the config file, then copy and paste the full config block from Step 4 again. Replace `<your api key>` with your actual key and save.
 
 If none of that works, try deleting the config, restarting Claude Desktop, then re-adding the config and restarting again.
 
