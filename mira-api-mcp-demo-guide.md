@@ -9,8 +9,8 @@ Product Marketing | March 2026
 
 A step-by-step guide for connecting the Mira API to an MCP-compatible tool and verifying it works. This covers two ways to access the Mira API:
 
-1. **MCP connection** — Connect an AI tool (like Claude Desktop) to the Mira API so you can query Meltwater in natural language from inside the tool.
-2. **Developer page "Try it out"** — Test the Mira API directly from the Developer Documentation page in your browser. No local setup required.
+1. **MCP connection.** Connect an AI tool (like Claude Desktop) to the Mira API so you can query Meltwater in natural language from inside the tool.
+2. **Developer page "Try it out."** Test the Mira API directly from the Developer Documentation page in your browser. No local setup required.
 
 ---
 
@@ -24,7 +24,9 @@ A step-by-step guide for connecting the Mira API to an MCP-compatible tool and v
 
 **MCP-compatible tool:** Any AI assistant that supports MCP connections. Claude Desktop, Cursor, and others.
 
-**Mira Project:** A saved set of context in Meltwater (brand, competitors, topics, filters) that makes Mira's responses more relevant without the user needing to repeat background info in every prompt.
+**Mira Project:** A saved set of context in Meltwater (brand, competitors, topics, filters) that makes Mira AI's responses more relevant without the user needing to repeat background info in every prompt. Mira Projects can also include saved Explore searches, which give Mira AI access to a specific, curated set of results to draw from.
+
+**Claude Desktop Project:** A set of saved instructions inside Claude Desktop that tell Claude how to behave in a conversation. Not the same as a Mira Project. You'll use a Claude Desktop Project to tell Claude to automatically find your Mira Projects and use their saved searches when answering questions. See Step 7 for setup.
 
 **Streaming:** When the response appears word by word in real time (like ChatGPT) instead of loading all at once.
 
@@ -32,9 +34,9 @@ A step-by-step guide for connecting the Mira API to an MCP-compatible tool and v
 
 ## How MCP connects to the Mira API
 
-The Mira API lets customers bring Mira AI-powered responses into their own tools. MCP is one way to do that. It connects the Mira API to assistants so users can ask Meltwater questions in natural language, from inside the tools they already work in.
+Think of the Mira API as the kitchen and MCP as the delivery route. The food is the same whether you eat at the restaurant or order through DoorDash. MCP just delivers Meltwater intelligence to the tools your team already has open.
 
-MCP is a configuration layer on top of the Mira API. Same intelligence, same cited responses, just delivered through a different channel. 
+The Mira API lets customers bring Mira AI-powered responses into their own tools. MCP connects the Mira API to AI assistants so users can ask Meltwater questions in natural language, from inside the tools they already work in. Same intelligence, same cited responses, just delivered through a different channel.
 
 <img width="1664" height="944" alt="Mira API Diagram " src="https://github.com/user-attachments/assets/26432efc-6511-4799-9c11-e47992c477fa" />
 
@@ -70,6 +72,8 @@ If that doesn't work, find the file manually:
 
 ### Step 4: Paste the config
 
+The config file is like a contact card. It tells Claude Desktop three things: where Meltwater lives, how to get in (your API key), and what language to speak (MCP). You're just filling in the address.
+
 Replace everything in the file with the following, swapping in your real API key where it says `<your api key>`:
 
 ```json
@@ -104,13 +108,39 @@ Open a new conversation in Claude Desktop. You should see "meltwater" listed as 
 
 If it doesn't work, check the Troubleshooting section below.
 
-### Getting enriched responses with citations
+### Step 7: Set up a Claude Desktop Project for better results
 
-By default, Claude may summarize the Mira API response without including the original source links. To ensure every response includes structured sections, sentiment labels, and cited sources with article titles and URLs, create a Claude Desktop Project. Go to **Projects** in the sidebar, create a new Project (e.g., "Mira API Demo"), and add instructions like:
+**Important: "Project" here means a Claude Desktop Project, not a Mira Studio Project.** They're different things. A Mira Project holds your brand context inside Meltwater. A Claude Desktop Project holds instructions that tell Claude how to behave when you chat with it. You need both working together to get the best results.
 
-> *"For every question, use the Meltwater MCP tool to retrieve real-time media intelligence. Always include the original source citations with article titles and URLs in your response. Format the response with clear sections, sentiment labels, and cited sources."*
+Without a Claude Desktop Project, Claude may skip source links, return flat text, or ignore your Mira Projects entirely. Setting one up takes about two minutes and makes every response richer.
 
-Select this Project before running your prompts. This ensures the response comes back fully enriched every time, without needing to add extra instructions to each prompt.
+**Create the Project:**
+
+1. In Claude Desktop, go to **Projects** in the sidebar.
+2. Click **Create a new project** (e.g., "Mira API Demo").
+3. In the Project instructions, paste the following:
+
+> *"For every question, use the Meltwater MCP tool to retrieve real-time media intelligence. Before answering, call list_projects to find the relevant Mira Project by name, then use that project's ID and its saved Explore searches when querying. Always include the original source citations with article titles and URLs in your response. Format the response with clear sections, sentiment labels, and cited sources. Enable streaming."*
+
+4. Save the Project and select it before running your prompts.
+
+**What this does:**
+
+When you ask a question like "What are the recent media narratives around Poppi?", Claude will:
+
+1. Call `list_projects` to find your saved Mira Projects (Poppi, Laroche-Posay, etc.)
+2. Match "Poppi" to the right project and pull its ID
+3. Surface the saved Explore searches attached to that project (e.g., "Poppi," "Poppi Brand Search")
+4. Call `ask` with the project ID and saved searches, so the response is grounded in your brand setup
+5. Return a structured, cited response with sentiment labels and source URLs
+
+Behind the scenes, the MCP server exposes exactly two tools: `list_projects` (to find your Mira Projects) and `ask` (to send a question, optionally scoped to a specific project). The Claude Desktop Project instructions tell Claude to use both.
+
+> **[Screenshot needed: Claude Desktop Projects sidebar showing the Mira API Demo project selected]**
+
+> **[Screenshot needed: Claude Desktop showing the list_projects call returning Mira Projects, then querying with project context and saved Explore search]**
+
+**Why this matters:** Without a Claude Desktop Project, you'd have to tell Claude what to do in every prompt. With it, Claude already knows to find your Mira Projects, use your saved searches, and format the response with citations. Type a question, get a fully sourced answer.
 
 ---
 
@@ -219,14 +249,17 @@ This means Node.js isn't installed or didn't install correctly. Go to [https://n
 This usually means one of two things: your API key is expired or invalid, or your prompt quota has been reached. Flag it to the Solutions Agent in Slack to confirm your key is active and your account has remaining prompts.
 
 **"The response is too generic or missing context about the brand."**
-Set up a Mira Project for the brand you're testing. Without a Project, Mira answers based only on the prompt. With a Project, it pulls in your saved brand context, competitors, and filters automatically.
+Set up a Mira Project for the brand you're testing. Without a Project, Mira AI answers based only on the prompt. With a Project, it pulls in your saved brand context, competitors, and filters automatically.
+
+**"The response is slow or returning errors during heavy testing."**
+The MCP server is limited to 60 requests per minute, shared with the Mira API Responses endpoint. If you're running a lot of test prompts back to back, space them out. Conversations can also hold up to 290,000 tokens of history before older messages get trimmed.
 
 ---
 
 ## Resources
 
 **Developer Documentation**
-- [Mira API Overview](https://developer.meltwater.com/docs/meltwater-api/mira-api/overview/) | [Responses Endpoint](https://developer.meltwater.com/docs/meltwater-api/mira-api/responses/) | [MCP Server Setup](https://developer.meltwater.com/docs/meltwater-api/mira-api/mcp-server/) | [API Credentials](https://developer.meltwater.com/docs/meltwater-api/getting-started/api-credentials/)
+- [Mira API Overview](https://developer.meltwater.com/docs/meltwater-api/mira-api/overview/) | [Responses Endpoint](https://developer.meltwater.com/docs/meltwater-api/mira-api/responses/) | [MCP Server Setup](https://developer.meltwater.com/docs/meltwater-api/mira-api/mcp-server/) | [API Credentials](https://developer.meltwater.com/docs/meltwater-api/getting-started/api-credentials/) | [Projects](https://developer.meltwater.com/docs/meltwater-api/mira-api/projects/)
 - [API Endpoints / "Try it out"](https://developer.meltwater.com/docs/meltwater-api/reference/endpoints/#/Mira%20API/post_v3_mira_responses) (for live testing)
 
 **Demo Assets**
