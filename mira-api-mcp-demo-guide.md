@@ -1,3 +1,4 @@
+[mira-api-mcp-demo-guide.md](https://github.com/user-attachments/files/26130866/mira-api-mcp-demo-guide.md)
 # Mira API MCP Server Demo Guide [Sales]
 
 **Privileged & Confidential. Internal Only.**
@@ -59,9 +60,16 @@ Before you demo, make sure you have:
 - [ ] The Mira API MCP server connected to your tool (the connector file that links your AI tool to Meltwater)
 - [ ] An active Meltwater API key tied to your demo/buddy account
 - [ ] A Mira Project set up for the brand you plan to demo (this pre-loads brand context so Mira's answers are more relevant)
+- [ ] A Claude Desktop Project configured with instructions that tell Claude to always use the Meltwater MCP tool and include source citations with URLs in every response (see "Getting Enriched Responses with Citations" below)
 - [ ] All prompts tested in your buddy account before the live call
 
 **Tip:** Run through the full demo flow at least once before any customer-facing call. MCP connections can take a moment to initialize, and you want to know what the output looks like for your chosen brand.
+
+**Getting enriched responses with citations:** By default, Claude may summarize the Mira API response without including the original source links. To ensure every response includes structured sections, sentiment labels, and cited sources with article titles and URLs, create a Claude Desktop Project for your demo. Go to **Projects** in the sidebar, create a new Project (e.g., "Mira API Demo"), and add instructions like:
+
+> *"For every question, use the Meltwater MCP tool to retrieve real-time media intelligence. Always include the original source citations with article titles and URLs in your response. Format the response with clear sections, sentiment labels, and cited sources."*
+
+Select this Project before running your demo. This ensures the response comes back fully enriched every time, without needing to add extra instructions to your prompt.
 
 ---
 
@@ -205,7 +213,13 @@ Type your chosen prompt (from the use cases above) directly into the tool.
 
 **What to do:** Type the prompt. Wait for the response to generate.
 
-<img width="800" alt="A prompt typed into Claude Desktop with the Mira API response streaming in" src="screenshots/prompt-streaming.png" />
+<img width="800" alt="The Mira API response streaming in, showing the MCP tool calling Meltwater in real time" src="screenshots/prompt-streaming.png" />
+
+**What the prospect sees while the response loads:** Claude shows a transparent accordion that expands to reveal what's happening behind the scenes. The prospect will see the MCP tool loading, the request being sent to Meltwater (with the prompt text visible), and the result coming back. This is a great moment in the demo — it makes the connection between the AI tool and Meltwater visible and tangible. You don't need to explain every detail, but you can point to it and say:
+
+"You can see the tool is calling Meltwater right now. It's sending the question to the Mira API and pulling back real-time intelligence. This is live."
+
+Once the accordion collapses and the final response appears, move to Step 4.
 
 "Watch what comes back. This is a real call to the Mira API. The same data, the same intelligence, the same cited sources you'd see in Mira Studio. Delivered right here."
 
@@ -399,7 +413,7 @@ You should already have access through your buddy account. Full instructions are
 
 <img width="800" alt="Meltwater Account page showing Meltwater API section with token list and Create Token button" src="screenshots/api-tokens-page.png" />
 
-If you don't see "Meltwater API" in your sidebar, your buddy account may not have API access enabled. Flag it to the Solutions Agent in Slack to get it turned on.
+If you don't see "Meltwater API" in your sidebar, all buddy accounts should have access. Reach out to support to get it resolved.
 
 Note for prospects: customers receive their API key after they purchase and begin onboarding. They won't have one during the sales process.
 
@@ -445,4 +459,10 @@ That's fine. Say: "Great question. Let me connect you with our team who can walk
 
 **Adding images to this guide on GitHub:** To embed the diagram or GIF directly in this page, download the image file, upload it to this repo, and add `![Mira API Diagram](mira-api-diagram.png)` where you want it to appear.
 
-**Follow-up email template:** See [mira-api-demo-followup-email.md](mi
+**Follow-up email template:** See [mira-api-demo-followup-email.md](mira-api-demo-followup-email.md) in this repo for a copy-paste email to send prospects after the demo.
+
+---
+
+*Questions or feedback on this guide? Reach out to PMM in #product-api.*
+
+*Co-authored with Claude, Anthropic*
