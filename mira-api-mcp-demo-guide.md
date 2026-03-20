@@ -1,4 +1,4 @@
-[mira-api-mcp-demo-guide.md](https://github.com/user-attachments/files/26130866/mira-api-mcp-demo-guide.md)
+[mira-api-mcp-demo-guide.md](https://github.com/user-attachments/files/26130911/mira-api-mcp-demo-guide.md)
 # Mira API MCP Server Demo Guide [Sales]
 
 **Privileged & Confidential. Internal Only.**
