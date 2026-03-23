@@ -1,8 +1,10 @@
 [mira-api-demo-followup-email.md](https://github.com/user-attachments/files/26097044/mira-api-demo-followup-email.md)
 # Mira API Demo Follow-Up Email [Sales]
 
-Copy and paste the template below after your Mira API demo. Replace the images with **[this Saleshood link](https://meltwater.skillshood.com/asset/1845080?view_type=Library)** 
-Replace the bracketed fields with the prospect's details. 
+Copy and paste the template below after your Mira API demo. 
+
+Important: 
+- Replace the image link with **[this Saleshood link](https://meltwater.skillshood.com/asset/1845080?view_type=Library)** or an attachment. 
 
 ---
 
