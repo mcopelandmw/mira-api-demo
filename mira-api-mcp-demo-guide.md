@@ -278,7 +278,7 @@ The MCP server is limited to 60 requests per minute, shared with the Mira API Re
 - [API Endpoints / "Try it out"](https://developer.meltwater.com/docs/meltwater-api/reference/endpoints/#/Mira%20API/post_v3_mira_responses) (for live testing)
 
 **Demo Assets**
-- [Mira API MCP Demo Video](https://meltwater-3.wistia.com/medias/x5c95xb5gz) (Wistia)
+- [Mira API MCP Demo Video](https://meltwater-3.wistia.com/medias/smx0l49zo0) (Wistia)
 - [Mira MCP Claude Project Walkthrough](screenshots/Mira%20MCP%20Claude%20Project.mp4) (Video)
 - [Mira API Technical Diagram](https://docs.google.com/presentation/d/1lqofldVT5sQMH10lZ3tviuv9BwJOVXBbJZoqdlxOEFA/edit?slide=id.g3cdb1fb610a_0_15#slide=id.g3cdb1fb610a_0_15) (Google Slides)
 
