@@ -46,7 +46,7 @@ The Mira API lets customers bring Mira AI-powered responses into their own tools
 
 Follow these steps to connect Claude Desktop to the Mira API.
 
-Personal note: the author of this guide connected the Mira API to Claude Desktop on her second day using Claude, with zero technical background. If I can do it, you can, too. 🐥
+Personal note: As the author of this guide, I successfully connected the Mira API to Claude Desktop on my second day using Claude, with zero technical background. If I can do it, you can, too. 🐥
 
 ### Step 1: Install Node.js (if you don't have it already)
 
@@ -55,6 +55,8 @@ The MCP connection requires Node.js to run. This is the one thing the Developer 
 1. Go to [https://nodejs.org](https://nodejs.org).
 2. If you're not sure whether you already have it, just download and install the LTS version. It won't cause issues if it's already installed.
 3. Run the installer and accept the defaults.
+
+**Windows users:** After installing Node.js, restart your computer before continuing. Windows needs a full restart to update the system PATH so that Claude Desktop can find Node.js. Restarting just Claude Desktop is not enough.
 
 ### Step 2: Get your Meltwater API key
 
@@ -74,7 +76,10 @@ If that doesn't work, find the file manually:
 
 The config file is like a contact card. It tells Claude Desktop three things: where Meltwater lives, how to get in (your API key), and what language to speak (MCP). You're just filling in the address.
 
-Replace everything in the file with the following, swapping in your real API key where it says `<your api key>`:
+Replace everything in the file with the config for your operating system, swapping in your real API key where indicated:
+
+<details>
+<summary><strong>Mac config</strong></summary>
 
 ```json
 {
@@ -96,9 +101,41 @@ Replace everything in the file with the following, swapping in your real API key
 }
 ```
 
-### Step 5: Save and restart Claude Desktop
+</details>
 
-Save the config file, then fully quit and reopen Claude Desktop. The MCP connection won't activate until you restart.
+<details>
+<summary><strong>Windows config</strong></summary>
+
+```json
+{
+  "mcpServers": {
+    "meltwater": {
+      "command": "C:\\Program Files\\nodejs\\npx.cmd",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://api.meltwater.com/mcp",
+        "--header",
+        "apikey:%MELTWATER_API_KEY%"
+      ],
+      "env": {
+        "MELTWATER_API_KEY": "<your api key>"
+      }
+    }
+  }
+}
+```
+
+**Why the Windows config looks different:** Windows needs the full file path to `npx.cmd` because Claude Desktop may not resolve the shorthand `npx` command on its own. It also uses `%VARIABLE%` syntax for environment variables instead of `${VARIABLE}`. If you installed Node.js to a custom location, replace `C:\\Program Files\\nodejs\\npx.cmd` with the actual path to `npx.cmd` on your machine.
+
+</details>
+
+### Step 5: Save and restart
+
+Save the config file, then:
+
+- **Mac:** Fully quit and reopen Claude Desktop.
+- **Windows:** Restart your computer. A full restart ensures Windows picks up the config changes and any PATH updates from the Node.js installation. Restarting just Claude Desktop may not be enough.
 
 After restarting, go to **Settings > Developer** and confirm you see "meltwater" listed as an active MCP server. This is how you know the config loaded correctly.
 
@@ -229,7 +266,8 @@ Things to look for:
 
 ## Troubleshooting
 
-**"I don't have an API key."**
+### 1. "I don't have an API key."
+
 You should already have access through your buddy account. Full instructions are on the [API Credentials page](https://developer.meltwater.com/docs/meltwater-api/getting-started/api-credentials/). Here's the quick version:
 
 1. Log into your Meltwater buddy account.
@@ -244,30 +282,48 @@ If you don't see "Meltwater API" in your sidebar, all buddy accounts should have
 
 Note for customer-facing context: customers receive their API key after purchase during onboarding. They won't have one during the sales process.
 
-**"My MCP tool isn't connecting to Meltwater."**
+### 2. "My MCP tool isn't connecting to Meltwater."
+
 Check these in order:
 
 1. **Is Node.js installed?** If you skipped Step 1 of the MCP setup, go to [https://nodejs.org](https://nodejs.org) and install the LTS version first.
 2. **Is your API key correct?** Make sure the key in the config file matches the token from your buddy account (Account > Meltwater API). Copy-paste it again to be safe.
-3. **Did you restart Claude Desktop?** The config only loads on startup. Fully quit and reopen the app.
-4. **Is the config file formatted correctly?** A missing comma or bracket will break it silently. If you're not sure, delete everything in the config file, then copy and paste the full config block from Step 4 again. Replace `<your api key>` with your actual key and save.
+3. **Did you restart Claude Desktop?** The config only loads on startup. Fully quit and reopen the app. **On Windows, restart your entire computer** — not just Claude Desktop — especially if you recently installed Node.js.
+4. **Are you using the right config for your OS?** Mac and Windows use different config formats. Make sure you copied the config block for your operating system from Step 4. The most common Windows issue is using the Mac config, which has `"command": "npx"` instead of the full path to `npx.cmd`.
+5. **Is the config file formatted correctly?** A missing comma or bracket will break it silently. If you're not sure, delete everything in the config file, then copy and paste the full config block from Step 4 again. Replace the API key placeholder with your actual key and save.
 
-If none of that works, try deleting the config, restarting Claude Desktop, then re-adding the config and restarting again.
+If none of that works, try deleting the config, restarting Claude Desktop (or your computer on Windows), then re-adding the config and restarting again.
 
-**"How do I set up MCP in the first place?"**
+### 3. "How do I set up MCP in the first place?"
+
 Follow Option 1 above. For the full Developer docs version, see the [MCP Server docs page](https://developer.meltwater.com/docs/meltwater-api/mira-api/mcp-server/). Note: the docs lead with an OpenAI example first. Scroll down to the "Integrating with Claude Desktop" section for the config you need.
 
-**"I got an error about npx or mcp-remote not being found."**
-This means Node.js isn't installed or didn't install correctly. Go to [https://nodejs.org](https://nodejs.org), download and install the LTS version again, then restart your computer and Claude Desktop.
+### 4. "I got an error about npx or mcp-remote not being found."
 
-**"The response came back empty or with an error."**
+This means either Node.js isn't installed, or Claude Desktop can't find it on your system PATH.
+
+- **Mac:** Go to [https://nodejs.org](https://nodejs.org), download and install the LTS version again, then restart Claude Desktop.
+- **Windows:** First, make sure Node.js is installed. If it is and you're still getting this error, your config probably uses `"command": "npx"` instead of the full path. Switch to the Windows config from Step 4, which uses `"command": "C:\\Program Files\\nodejs\\npx.cmd"`. Then restart your computer.
+
+### 5. "The response came back empty or with an error."
+
 This usually means one of two things: your API key is expired or invalid, or your prompt quota has been reached. Flag it to the Solutions Agent in Slack to confirm your key is active and your account has remaining prompts.
 
-**"The response is too generic or missing context about the brand."**
+### 6. "The response is too generic or missing context about the brand."
+
 Set up a Mira Project for the brand you're testing. Without a Project, Mira AI answers based only on the prompt. With a Project, it pulls in your saved brand context, competitors, and filters automatically.
 
-**"The response is slow or returning errors during heavy testing."**
+### 7. "The response is slow or returning errors during heavy testing."
+
 The MCP server is limited to 60 requests per minute, shared with the Mira API Responses endpoint. If you're running a lot of test prompts back to back, space them out. Conversations can also hold up to 290,000 tokens of history before older messages get trimmed.
+
+### 8. "I'm on Windows and the MCP connection still isn't working after following all the steps."
+
+A few Windows-specific things to double-check:
+
+1. Make sure you used the **Windows config** from Step 4 — not the Mac version. The key differences are the full path to `npx.cmd` and the `%VARIABLE%` syntax for the API key in the header.
+2. If you installed Node.js to a non-default location, update the `"command"` path in your config to match. The default is `C:\Program Files\nodejs\npx.cmd`.
+3. Restart your entire computer after making config changes, not just Claude Desktop. Windows often needs a full restart to pick up PATH and environment variable changes.
 
 ---
 
