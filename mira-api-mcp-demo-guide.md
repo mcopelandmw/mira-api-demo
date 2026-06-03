@@ -1,7 +1,7 @@
 # Mira API MCP Server: Setup & Testing Guide
 
 **Internal Only.**
-Product Marketing | March 2026
+Product Marketing
 
 ---
 
