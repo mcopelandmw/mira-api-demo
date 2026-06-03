@@ -329,18 +329,10 @@ A few Windows-specific things to double-check:
 
 ## Resources
 
-**Follow-Up Email**
-- [Make a Copy](https://meltwater.skillshood.com/asset/1852374?view_type=Library)
-
 **Developer Documentation**
 - [Mira API Overview](https://developer.meltwater.com/docs/meltwater-api/mira-api/overview/) | [Responses Endpoint](https://developer.meltwater.com/docs/meltwater-api/mira-api/responses/) | [MCP Server Setup](https://developer.meltwater.com/docs/meltwater-api/mira-api/mcp-server/) | [API Credentials](https://developer.meltwater.com/docs/meltwater-api/getting-started/api-credentials/) | [Projects](https://developer.meltwater.com/docs/meltwater-api/mira-api/projects/)
 - [API Endpoints / "Try it out"](https://developer.meltwater.com/docs/meltwater-api/reference/endpoints/#/Mira%20API/post_v3_mira_responses) (for live testing)
 
-**Demo Assets**
-- [Mira API MCP Demo Video](https://meltwater-3.wistia.com/medias/smx0l49zo0) (Wistia)
-- [Mira API Technical Diagram](https://docs.google.com/presentation/d/1lqofldVT5sQMH10lZ3tviuv9BwJOVXBbJZoqdlxOEFA/edit?slide=id.g3cdb1fb610a_0_15#slide=id.g3cdb1fb610a_0_15) (Google Slides)
-
----
 
 *Questions or feedback? Reach out to PMM in #product-api.*
 
